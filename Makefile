@@ -6,7 +6,7 @@
 #    By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 15:16:12 by pveiga-c          #+#    #+#              #
-#    Updated: 2023/08/16 18:59:30 by pveiga-c         ###   ########.fr        #
+#    Updated: 2023/08/16 19:40:13 by pveiga-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,28 +20,25 @@ OBJS			= $(SRCS:.c=.o)
 
 CC 				= cc 
 
-CFLAGS 			= -Imlx_linux -g -fsanitize=address
-# -Wall -Wextra -Werror 
+CFLAGS 			= -Wall -Wextra -Werror  -Imlx_linux -g # -fsanitize=address
 
 MLX_L			= -L mlx_linux -lmlx -lXext -lX11
 
-LIBFT_PATH 		= libft/
+LIBFT_PATH 		= ./libft
 
-LIBFT_LIB 		= $(LIBFT_PATH)libft.a
+LIBFT_LIB 		= $(LIBFT_PATH)/libft.a
 
 RM 				= rm -f
 
 
-all:		$(LIBFT_LIB) $(MLX_LIB) $(NAME)
-
-$(LIBFT_LIB):
-	make -C $(LIBFT_PATH)
+all:		$(LIBFT_LIB) $(NAME)
 
 $(NAME):	
 			make -C mlx_linux
+			make -C $(LIBFT_PATH)
 			$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(MLX_L) $(LIBFT_LIB)
-			@echo $(GREEN)$(NAME_PROJECT) $(RESET)
-			@echo "$(GREEN)Successfully built $(RESET)"
+			@echo "$(BLUE)Compilation $(NAME_PROJECT) $(GREEN)  [OK]$(RESET)"
+			@echo "$(BLUE)Successfully built $(GREEN)   [OK]$(RESET)"
 	
 clean:		
 	$(RM) $(OBJS)
