@@ -6,7 +6,7 @@
 #    By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 15:16:12 by pveiga-c          #+#    #+#              #
-#    Updated: 2023/08/16 19:40:13 by pveiga-c         ###   ########.fr        #
+#    Updated: 2023/08/18 16:16:02 by pveiga-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,16 +34,17 @@ RM 				= rm -f
 all:		$(LIBFT_LIB) $(NAME)
 
 $(NAME):	
-			make -C mlx_linux
-			make -C $(LIBFT_PATH)
+			@make -C mlx_linux
+			@make -C $(LIBFT_PATH)
 			$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(MLX_L) $(LIBFT_LIB)
+			clear
 			@echo "$(BLUE)Compilation $(NAME_PROJECT) $(GREEN)  [OK]$(RESET)"
 			@echo "$(BLUE)Successfully built $(GREEN)   [OK]$(RESET)"
 	
 clean:		
 	$(RM) $(OBJS)
-	make clean -C $(LIBFT_PATH)
-	make clean -C mlx_linux
+	@make clean -C $(LIBFT_PATH)
+	@make clean -C mlx_linux
 	clear
 	@echo "$(GREEN) $(NAME_PROJECT) $(RED)Objects Removed! $(RESET)"
 
