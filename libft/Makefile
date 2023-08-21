@@ -54,16 +54,9 @@ SRCS			= 		  ft_atoi.c \
 						  ft_lstclear.c \
 						  ft_lstiter.c \
 						  ft_lstmap.c \
-						  ft_printf/ft_printf.c \
-						  ft_printf/ft_put_nbr_lower.c \
-						  ft_printf/ft_put_nbr_upper.c 	\
-						  ft_printf/ft_put_point_hexa.c \
-						  ft_printf/ft_put_unsig_dec.c \
-	 					  ft_printf/ft_putchar.c \
-						  ft_printf/ft_putnbr.c \
-						  ft_printf/ft_putstr.c \
-						  get_next_line/get_next_line.c \
-						 	  
+						  get_next_line.c \
+						  get_next_line_utils.c \
+						  						 	  
 OBJ_DIR = objs
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))

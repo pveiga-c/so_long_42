@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 17:56:50 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/09 15:36:07 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:17:23 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 /* ------------Include-------------------*/
 /*---------------------------------------*/
 
-# include "ft_printf/ft_printf.h"
-# include "get_next_line/get_next_line.h"
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include "get_next_line.h"
 
 /*---------------------------------------*/
 /*---------------------------------------*/

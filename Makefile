@@ -6,7 +6,7 @@
 #    By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 15:16:12 by pveiga-c          #+#    #+#              #
-#    Updated: 2023/08/18 16:16:02 by pveiga-c         ###   ########.fr        #
+#    Updated: 2023/08/21 20:00:46 by pveiga-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,20 +24,23 @@ CFLAGS 			= -Wall -Wextra -Werror  -Imlx_linux -g # -fsanitize=address
 
 MLX_L			= -L mlx_linux -lmlx -lXext -lX11
 
-LIBFT_PATH 		= ./libft
+LIBFT_PATH 		= libft
 
-LIBFT_LIB 		= $(LIBFT_PATH)/libft.a
+LIBFT_LIB	= $(LIBFT_PATH)/libft.a
 
 RM 				= rm -f
 
+.c.o:
+			@$(CC) -c $< -o $@
 
 all:		$(LIBFT_LIB) $(NAME)
 
-$(NAME):	
+$(NAME):	$(OBJS)
 			@make -C mlx_linux
-			@make -C $(LIBFT_PATH)
-			$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(MLX_L) $(LIBFT_LIB)
 			clear
+			@make -C $(LIBFT_PATH)
+			$(CC) $(CFLAGS) $(OBJS) $(MLX_L) $(LIBFT_LIB) -o $(NAME) 
+#			clear
 			@echo "$(BLUE)Compilation $(NAME_PROJECT) $(GREEN)  [OK]$(RESET)"
 			@echo "$(BLUE)Successfully built $(GREEN)   [OK]$(RESET)"
 	

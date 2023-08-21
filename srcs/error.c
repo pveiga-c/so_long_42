@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 19:02:56 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/04/28 16:06:59 by pveiga-c         ###   ########.fr       */
+/*   Created: 2023/08/21 18:44:28 by pveiga-c          #+#    #+#             */
+/*   Updated: 2023/08/21 19:51:31 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-Imprime um único caractere.
-*/
+#include "../includes/so_long.h"
 
-#include "ft_printf.h"
-
-void	ft_putchar(char c, int *len_final)
+void error(int num)
 {
-	write(1, &c, 1);
-	*len_final += 1;
+    if (num == 1)
+        write(1,"Error: can't open the map.\n", 27);
+    exit(1);
 }
