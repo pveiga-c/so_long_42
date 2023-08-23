@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:32:20 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/23 15:38:30 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/23 19:28:28 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ void	check_map(char **map_matrix, t_map *map, t_win *so_long)
 {
 	check_retangular(map_matrix, map, so_long);
 	check_walls(map_matrix, map, so_long);
+	check_componentes(map_matrix, map, so_long);
+	check_path(map_matrix, map, so_long)
+	printf("ola2\n");
 }
 
 void	check_retangular(char **map_matrix, t_map *map, t_win *so_long)
@@ -48,9 +51,51 @@ void	check_walls(char **map_matrix, t_map *map, t_win *so_long)
 	i = 1;
 	while (i != map->height - 1)
 	{
-		if (map_matrix[i][0] == '1' && map_matrix[i][map->width] == '1')
+		if (map_matrix[i][0] == '1' && map_matrix[i][map->width - 1] == '1')
 			i++;
 		else
 			error(3);
 	}
+}
+
+void 	check_componentes(char **map_matrix, t_map *map, t_win *so_long)
+{
+	int i;
+	int j;
+
+	i = 1;
+	map->player = 0;
+	map->exit = 0;
+	map->collectible = 0;
+	while(i != map->height - 1)
+	{
+		j = 1;
+		while(j != map->width - 1)
+		{
+			if(map_matrix[i][j] == 'P')
+				map->player++;
+			if(map_matrix[i][j] == 'E')
+				map->exit++;
+			if(map_matrix[i][j] == 'C')
+				map->collectible++;
+			j++;
+		}
+		i++;
+	}
+	check_num_components(map);
+}
+
+void	check_path(char **map_matrix, t_map *map, t_win *so_long)
+{
+	/*
+		1. copiar a matrix
+		2. descobrir a posicao
+		3. flood fill
+			3.1. checar se o que e 
+			3.2. checar de e um X
+			3.3. executar o flood fill para esse posicao
+			3.4. repetir os pontos anteriores para posicao !=
+		4. ver se tem solucao 
+	*/
+	
 }
