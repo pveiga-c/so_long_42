@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/22 20:30:28 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/23 15:36:07 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@
 
 typedef struct s_map
 {
-	int     width;
+	int		width;
 	int		height;
-	
+
 }			t_map;
 
 typedef struct s_win
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-    char	**matrix;
+	char	**matrix;
 	t_map	*map;
 }			t_win;
 
@@ -44,4 +44,7 @@ void		error(int num);
 int			check_file(char *av);
 char		**copy_map(char *av, t_win *so_long);
 void		check_map(char **map_matrix, t_map *map, t_win *so_long);
+void		check_retangular(char **map_matrix, t_map *map, t_win *so_long);
+void		check_walls(char **map_matrix, t_map *map, t_win *so_long);
+
 #endif

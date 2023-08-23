@@ -6,7 +6,7 @@
 #    By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 15:16:12 by pveiga-c          #+#    #+#              #
-#    Updated: 2023/08/22 20:33:50 by pveiga-c         ###   ########.fr        #
+#    Updated: 2023/08/23 15:11:12 by pveiga-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJS			= $(SRCS:.c=.o)
 
 CC 				= cc 
 
-CFLAGS 			= -Wall -Wextra -Werror  -Imlx_linux -L/usr/lib -g # -fsanitize=address
+CFLAGS 			= -Wall -Wextra -Werror  -Imlx_linux -L/usr/lib -g -fsanitize=address
 
 MLX_L			= -Lmlx_linux -lm -lXext -lX11 -lz
 

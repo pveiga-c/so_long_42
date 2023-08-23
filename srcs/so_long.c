@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:05:55 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/22 19:51:29 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/23 15:36:00 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 int	main(int argc, char **argv)
 {
 	t_win	so_long;
-	
+
 	if (argc == 2 && check_file(argv[1]))
 	{
 		so_long.map = malloc(sizeof(t_map));
 		so_long.matrix = copy_map(argv[1], &so_long);
 		check_map(so_long.matrix, so_long.map, &so_long);
-	
-    }
+	}
 	return (0);
 }
