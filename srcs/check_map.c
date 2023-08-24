@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:32:20 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/23 20:28:30 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:52:45 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,20 +87,26 @@ void 	check_componentes(char **map_matrix, t_map *map, t_win *so_long)
 
 void	check_path(char **map_matrix, t_map *map, t_win *so_long)
 {
-	/*
-		1. copiar a matrix simmmmmmmmmmmmmmm
-		2. descobrir a posicao
-		3. flood fill
-			3.1. checar se o que e 
-			3.2. checar de e um X
-			3.3. executar o flood fill para esse posicao
-			3.4. repetir os pontos anteriores para posicao !=
-		4. ver se tem solucao 
-	*/
+	int i;
+	int j;
+
+	i = 0;
 	copy_matrix(map_matrix, so_long);
 	find_pos(map_matrix, map);
-	flood_fill(map_matrix, map, so_long);
+	flood_fill(so_long->temp_matrix, map, map->pos.h, map->pos.w);
 	
+	while(i != map->height)
+	{
+		j = 0;
+		while (j != map->width)
+		{
+			printf("%c", so_long->temp_matrix[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+	check_componentes_flood_fill(so_long->temp_matrix, map);
 }	
 void	find_pos(char **map_matrix, t_map *map)
 {
@@ -115,8 +121,8 @@ void	find_pos(char **map_matrix, t_map *map)
 		{
 			if(map_matrix[i][j] == 'P')
 			{
-				map->pos.pos_h = i;
-				map->pos.pos_w = j;
+				map->pos.h = i;
+				map->pos.w = j;
 				break;
 			}
 			j++;

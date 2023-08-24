@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:44:28 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/23 19:08:38 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:50:00 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,19 @@
 void	error(int num)
 {
 	if (num == 1)
-		write(1, "Error: Map name has to end in .ber\n", 36);
+		write(1, "Error\nMap name has to end in .ber\n", 35);
 	if (num == 2)
-		write(1, "Error: Map has to be rectangular\n", 34);
+		write(1, "Error\nMap has to be rectangular\n", 33);
 	if (num == 3)
-		write(1, "Error: The map must be closed/surrounded by walls\n", 51);
+		write(1, "Error\nThe map must be closed/surrounded by walls\n", 50);
 	if (num == 4)
-		write(1, "Error: Number of players must be 1\n", 36);
+		write(1, "Error\nNumber of players must be 1\n", 35);
 	if (num == 5)
-		write(1, "Error: Number of exits must be 1\n", 34);
+		write(1, "Error\nNumber of exits must be 1\n", 33);
 	if (num == 6)
-		write(1, "Error: Number of collectibles must be at least 1\n", 50);
+		write(1, "Error\nNumber of collectibles must be at least 1\n", 49);
+	if (num == 7)
+		write(1, "Error\nNo Solution on Map!\n", 27);
 	exit(num);
 }
 

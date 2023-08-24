@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/23 20:30:20 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:48:32 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 typedef struct s_pos
 {
-	int pos_h;
-	int pos_w;
+	int h;
+	int w;
 }			t_pos;
 
 typedef struct s_map
@@ -62,6 +62,8 @@ void		check_num_components(t_map	*map);
 void		check_path(char **map_matrix, t_map *map, t_win *so_long);
 void		copy_matrix(char **map_matrix, t_win *so_long);
 void		find_pos(char **map_matrix, t_map *map);
-void    	flood_fill(char **map_matrix, t_map *map, t_win *so_long);
+void    	flood_fill(char **map_matrix_temp, t_map *map, int pos_w, int pos_h);
+int			check_pos_flood_fill(char **temp_matrix, t_map *map, int pos_h, int pos_w);
+void 	check_componentes_flood_fill(char **map_matrix, t_map *map);
 
 #endif
