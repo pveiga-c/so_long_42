@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:48:17 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/23 15:35:48 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/23 19:54:58 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,19 @@ char	**copy_map(char *av, t_win *so_long)
 	free(temp_map);
 	close(fd);
 	return (map_matrix);
+}
+
+void	copy_matrix(char **map_matrix, t_win *so_long)
+{
+	int i;
+	int j;
+
+	i = 0;
+	so_long->temp_matrix = (char **)malloc(sizeof(char *) * (so_long->map->height + 1));
+	while(i != so_long->map->height)
+	{
+		so_long->temp_matrix[i] = ft_strdup(map_matrix[i]);
+		i++;
+	}
+	so_long->temp_matrix[i] = NULL;
 }

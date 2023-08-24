@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/23 19:10:26 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/23 20:30:20 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef struct s_pos
+{
+	int pos_h;
+	int pos_w;
+}			t_pos;
+
 typedef struct s_map
 {
 	int		width;
@@ -28,6 +34,7 @@ typedef struct s_map
 	int		player;
 	int		exit;
 	int		collectible;
+	t_pos	pos;
 
 }			t_map;
 
@@ -36,6 +43,7 @@ typedef struct s_win
 	void	*mlx_ptr;
 	void	*win_ptr;
 	char	**matrix;
+	char	**temp_matrix;
 	t_map	*map;
 }			t_win;
 
@@ -52,5 +60,8 @@ void		check_walls(char **map_matrix, t_map *map, t_win *so_long);
 void 		check_componentes(char **map_matrix, t_map *map, t_win *so_long);
 void		check_num_components(t_map	*map);
 void		check_path(char **map_matrix, t_map *map, t_win *so_long);
+void		copy_matrix(char **map_matrix, t_win *so_long);
+void		find_pos(char **map_matrix, t_map *map);
+void    	flood_fill(char **map_matrix, t_map *map, t_win *so_long);
 
 #endif
