@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:48:17 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/23 19:54:58 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:09:59 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,39 @@ char	**copy_map(char *av, t_win *so_long)
 
 void	copy_matrix(char **map_matrix, t_win *so_long)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
-	so_long->temp_matrix = (char **)malloc(sizeof(char *) * (so_long->map->height + 1));
-	while(i != so_long->map->height)
+	so_long->temp_matrix = (char **)malloc(sizeof(char *)
+			* (so_long->map->height + 1));
+	while (i != so_long->map->height)
 	{
 		so_long->temp_matrix[i] = ft_strdup(map_matrix[i]);
 		i++;
 	}
 	so_long->temp_matrix[i] = NULL;
+}
+
+void	find_pos(char **map_matrix, t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i != map->height)
+	{
+		j = 0;
+		while (j != map->width)
+		{
+			if (map_matrix[i][j] == 'P')
+			{
+				map->pos.h = i;
+				map->pos.w = j;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
 }
