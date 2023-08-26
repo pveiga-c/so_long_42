@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:32:20 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/26 15:25:35 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/26 16:56:20 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,16 +105,5 @@ void	check_path(char **map_matrix, t_map *map, t_win *so_long)
 	copy_matrix(map_matrix, so_long);
 	find_pos(map_matrix, map);
 	flood_fill(so_long->temp_matrix, map, map->pos.h, map->pos.w);
-	while (i != map->height)
-	{
-		j = 0;
-		while (j != map->width)
-		{
-			printf("%c", so_long->temp_matrix[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
 	check_componentes_flood_fill(map_matrix, so_long->temp_matrix, map);
 }

@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:44:28 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/26 15:40:22 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/26 16:59:51 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,14 @@ void	check_num_components(char **map_matrix, t_map *map)
 		free(map);
 		error(6);
 	}
-
 }
 
 void	free_matrix(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i] != NULL)
+	while (str[i] != NULL)
 	{
 		free(str[i]);
 		i++;

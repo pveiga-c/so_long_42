@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:27:26 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/26 15:25:45 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/26 17:00:03 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	check_pos_flood_fill(char **temp_matrix, t_map *map, int pos_h, int pos_w)
 	return (0);
 }
 
-void	check_componentes_flood_fill(char **map_matrix, char **temp_matrix, t_map *map)
+void	check_componentes_flood_fill(char **map_matrix, char **temp_matrix,
+		t_map *map)
 {
 	int		i;
 	int		j;

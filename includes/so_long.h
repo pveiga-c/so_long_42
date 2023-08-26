@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/26 15:24:49 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/26 16:59:18 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ typedef struct s_pos
 	int		w;
 }			t_pos;
 
+typedef struct s_img
+{
+	void	*wall;
+	void	*player;
+	void	*collectible;
+	void	*exit;
+	void	*floor;
+}			t_img;
+
 typedef struct s_map
 {
 	int		width;
@@ -45,6 +54,7 @@ typedef struct s_win
 	char	**matrix;
 	char	**temp_matrix;
 	t_map	*map;
+	t_img	*img;
 }			t_win;
 
 /*  error  */
@@ -77,6 +87,13 @@ void		flood_fill(char **map_matrix_temp, t_map *map, int pos_w,
 				int pos_h);
 int			check_pos_flood_fill(char **temp_matrix, t_map *map, int pos_h,
 				int pos_w);
-void		check_componentes_flood_fill(char **map_matrix,char **temp_matix, t_map *map);
+void		check_componentes_flood_fill(char **map_matrix, char **temp_matix,
+				t_map *map);
+
+void		game_init(t_win so_long);
+void		images(t_win so_long);
+void		new_file_img(char *path, t_win so_long);
+static void	put_img(t_win so_long, void *img, int x, int y);
+void		draw_imgs(t_win so_long);
 
 #endif
