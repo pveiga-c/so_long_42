@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/24 18:22:52 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:24:49 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void		check_path(char **map_matrix, t_map *map, t_win *so_long);
 /* error */
 
 void		error(int num);
-void		check_num_components(t_map *map);
+void		check_num_components(char **map_matrix, t_map *map);
+void		free_matrix(char **str);
 
 /* flood_fill */
 
@@ -76,6 +77,6 @@ void		flood_fill(char **map_matrix_temp, t_map *map, int pos_w,
 				int pos_h);
 int			check_pos_flood_fill(char **temp_matrix, t_map *map, int pos_h,
 				int pos_w);
-void		check_componentes_flood_fill(char **map_matrix, t_map *map);
+void		check_componentes_flood_fill(char **map_matrix,char **temp_matix, t_map *map);
 
 #endif

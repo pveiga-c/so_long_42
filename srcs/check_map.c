@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:32:20 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/24 18:42:07 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:25:35 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ void	check_retangular(char **map_matrix, t_map *map, t_win *so_long)
 		if (ft_strlen(map_matrix[i]) == ft_strlen(map_matrix[0]))
 			i++;
 		else
+		{
+			free_matrix(map_matrix);
+			free(map);
 			error(2);
+		}
 	}
 }
 
@@ -45,7 +49,11 @@ void	check_walls(char **map_matrix, t_map *map, t_win *so_long)
 		if (map_matrix[0][i] == '1' && map_matrix[map->height - 1][i] == '1')
 			i++;
 		else
+		{
+			free_matrix(map_matrix);
+			free(map);
 			error(3);
+		}
 	}
 	i = 1;
 	while (i != map->height - 1)
@@ -53,7 +61,11 @@ void	check_walls(char **map_matrix, t_map *map, t_win *so_long)
 		if (map_matrix[i][0] == '1' && map_matrix[i][map->width - 1] == '1')
 			i++;
 		else
+		{
+			free_matrix(map_matrix);
+			free(map);
 			error(3);
+		}
 	}
 }
 
@@ -81,7 +93,7 @@ void	check_componentes(char **map_matrix, t_map *map, t_win *so_long)
 		}
 		i++;
 	}
-	check_num_components(map);
+	check_num_components(map_matrix, map);
 }
 
 void	check_path(char **map_matrix, t_map *map, t_win *so_long)
@@ -104,5 +116,5 @@ void	check_path(char **map_matrix, t_map *map, t_win *so_long)
 		printf("\n");
 		i++;
 	}
-	check_componentes_flood_fill(so_long->temp_matrix, map);
+	check_componentes_flood_fill(map_matrix, so_long->temp_matrix, map);
 }

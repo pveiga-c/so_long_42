@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:44:28 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/24 18:10:05 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:40:22 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,38 @@ void	error(int num)
 	exit(num);
 }
 
-void	check_num_components(t_map *map)
+void	check_num_components(char **map_matrix, t_map *map)
 {
 	if (map->player != 1)
+	{
+		free_matrix(map_matrix);
+		free(map);
 		error(4);
+	}
 	if (map->exit != 1)
+	{
+		free_matrix(map_matrix);
+		free(map);
 		error(5);
+	}
 	if (map->collectible < 1)
+	{
+		free_matrix(map_matrix);
+		free(map);
 		error(6);
+	}
+
+}
+
+void	free_matrix(char **str)
+{
+	int i;
+
+	i = 0;
+	while(str[i] != NULL)
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }
