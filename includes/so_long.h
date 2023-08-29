@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/26 16:59:18 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:51:03 by correia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ int			check_pos_flood_fill(char **temp_matrix, t_map *map, int pos_h,
 void		check_componentes_flood_fill(char **map_matrix, char **temp_matix,
 				t_map *map);
 
-void		game_init(t_win so_long);
-void		images(t_win so_long);
+void		game_init(t_win *so_long);
+void		images(t_win *so_long);
 void		new_file_img(char *path, t_win so_long);
-static void	put_img(t_win so_long, void *img, int x, int y);
-void		draw_imgs(t_win so_long);
+static void	put_img(t_win *so_long, void *img, int x, int y);
+void		draw_imgs(t_win *so_long);
 
 #endif
