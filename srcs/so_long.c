@@ -6,7 +6,7 @@
 /*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:05:55 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/29 18:06:30 by correia          ###   ########.fr       */
+/*   Updated: 2023/08/30 08:41:12 by correia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	draw_imgs(t_win *so_long)
 	int	j;
 
 	i = 0;
-	while (i != so_long->map->height)
+	while (so_long->matrix[i])
 	{
 		j = 0;
-		while (j != so_long->map->width)
+		while (so_long->matrix[i][j])
 		{
 			if (so_long->matrix[i][j] == 'P')
 				put_img(so_long, so_long->img->player, j, i);
@@ -57,7 +57,7 @@ void	draw_imgs(t_win *so_long)
 
 void	images(t_win *so_long)
 {
-	so_long->img->player = mlx_xpm_file_to_image(so_long->mlx_ptr, "../image/xpm/pato", &so_long->map->width,
+	so_long->img->player = mlx_xpm_file_to_image(so_long->mlx_ptr, "./image/xpm/pato.xpm", &so_long->map->width,
 			&so_long->map->height);
 }
 
