@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/30 08:32:31 by correia          ###   ########.fr       */
+/*   Updated: 2023/08/31 19:48:03 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+#include <X11/X.h>
+#include <X11/keysym.h>
+
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
 
 typedef struct s_pos
 {
@@ -57,8 +65,10 @@ typedef struct s_win
 	t_img	*img;
 }			t_win;
 
-/*  error  */
-void		error(int num);
+/*  so_long  */
+
+void		game_init(t_win *so_long);
+int			main(int argc, char **argv);
 
 /* checks */
 
@@ -90,10 +100,16 @@ int			check_pos_flood_fill(char **temp_matrix, t_map *map, int pos_h,
 void		check_componentes_flood_fill(char **map_matrix, char **temp_matix,
 				t_map *map);
 
-void		game_init(t_win *so_long);
-void		images(t_win *so_long);
-void		new_file_img(char *path, t_win so_long);
+/* xpm */
+				
 static void	put_img(t_win *so_long, void *img, int x, int y);
 void		draw_imgs(t_win *so_long);
+void		images(t_win *so_long);
+
+
+int			exit_so_long(t_win *so_long);
+int			load_keys(int keycode, t_win *win);
+int 		on_keypress(int keysym, t_win *so_long);
+void 		move_player(t_win *so_long);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:05:55 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/31 16:16:36 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/31 19:48:41 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,53 +20,41 @@ void	game_init(t_win *so_long)
 	so_long->img = malloc(sizeof(t_img));
 	images(so_long);
 	draw_imgs(so_long);
+	mlx_hook(so_long->win_ptr, KeyRelease, KeyReleaseMask, load_keys, &so_long);
 	mlx_loop(so_long->mlx_ptr);
 }
 
-static void	put_img(t_win *so_long, void *img, int x, int y)
+int on_keypress(int keysym, t_win *so_long)
 {
-	mlx_put_image_to_window(so_long->mlx_ptr, so_long->win_ptr, img, x * 64, y * 64);
+	(void)so_long;
+	printf("Pressed key: %d\\n", keysym);
+	return (0);
+}
+ 
+
+int	exit_so_long(t_win *so_long)
+{
+	free_matrix(so_long->matrix);
+	mlx_destroy_image(so_long->mlx_ptr, so_long->img->collectible);
+	mlx_destroy_image(so_long->mlx_ptr, so_long->img->exit);
+	mlx_destroy_image(so_long->mlx_ptr, so_long->img->player);
+	mlx_destroy_image(so_long->mlx_ptr, so_long->img->floor);
+	mlx_destroy_image(so_long->mlx_ptr, so_long->img->wall);
+	free(so_long->mlx_ptr);
+	exit(0);
+}
+int	load_keys(int keycode, t_win *so_long)
+{
+	if (keycode == ESC)
+		exit_so_long(so_long);
+	else if(keycode == S)
+		move_player(so_long);
+	return (0);
 }
 
-void	draw_imgs(t_win *so_long)
+void move_player(t_win *so_long)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (so_long->matrix[i])
-	{
-		j = 0;
-		while (so_long->matrix[i][j])
-		{
-			if (so_long->matrix[i][j] == 'P')
-				put_img(so_long, so_long->img->player, j, i);
-			else if (so_long->matrix[i][j] == 'C')
-				put_img(so_long, so_long->img->collectible, j, i);
-			else if (so_long->matrix[i][j] == '1')
-				put_img(so_long, so_long->img->wall, j, i);
-			else if (so_long->matrix[i][j] == 'E')
-				put_img(so_long, so_long->img->exit, j, i);
-			else if (so_long->matrix[i][j] == '0')
-				put_img(so_long, so_long->img->floor, j, i);
-			j++;
-		}
-		i++;
-	}
-}
-
-void	images(t_win *so_long)
-{
-	so_long->img->player = mlx_xpm_file_to_image(so_long->mlx_ptr, "./xpm/player_down.xpm", &so_long->map->width,
-			&so_long->map->height);
-	so_long->img->wall = mlx_xpm_file_to_image(so_long->mlx_ptr, "./xpm/wall1.xpm", &so_long->map->width,
-			&so_long->map->height);
-	so_long->img->floor = mlx_xpm_file_to_image(so_long->mlx_ptr, "./xpm/floor.xpm", &so_long->map->width,
-			&so_long->map->height);	
-	so_long->img->collectible = mlx_xpm_file_to_image(so_long->mlx_ptr, "./xpm/collectible.xpm", &so_long->map->width,
-			&so_long->map->height);	
-	so_long->img->exit = mlx_xpm_file_to_image(so_long->mlx_ptr, "./xpm/exit1.xpm", &so_long->map->width,
-			&so_long->map->height);
+	
 }
 
 int	main(int argc, char **argv)
@@ -85,6 +73,7 @@ int	main(int argc, char **argv)
 		so_long.matrix = copy_map(argv[1], &so_long);
 		check_map(so_long.matrix, so_long.map, &so_long);
 		game_init(&so_long);
+		
 		free(so_long.map);
 		free_matrix(so_long.matrix);
 		free_matrix(so_long.temp_matrix);
