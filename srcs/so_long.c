@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:05:55 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/30 20:24:34 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/08/31 09:32:39 by correia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	images(t_win *so_long)
 {
 	so_long->img->player = mlx_xpm_file_to_image(so_long->mlx_ptr, "./image/xpm/floor4.xpm", &so_long->map->width,
 			&so_long->map->height);
-	so_long->img->wall = mlx_xpm_file_to_image(so_long->mlx_ptr, "./image/xpm/wall.xpm", &so_long->map->width,
+	so_long->img->wall = mlx_xpm_file_to_image(so_long->mlx_ptr, "./image/xpm/wall64.xpm", &so_long->map->width,
 			&so_long->map->height);
 	so_long->img->floor = mlx_xpm_file_to_image(so_long->mlx_ptr, "./image/xpm/floor.xpm", &so_long->map->width,
 			&so_long->map->height);	
