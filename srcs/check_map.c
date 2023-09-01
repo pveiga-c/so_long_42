@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:32:20 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/26 16:56:20 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/01 20:24:58 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,11 @@ void	check_retangular(char **map_matrix, t_map *map, t_win *so_long)
 	i = 1;
 	while (i != map->height)
 	{
-		if (ft_strlen(map_matrix[i]) == ft_strlen(map_matrix[0]))
+		if (ft_strlen(map_matrix[i]) == ft_strlen(map_matrix[0]) && map_matrix[i][0] != '\n')
 			i++;
 		else
 		{
 			free_matrix(map_matrix);
-			free(map);
 			error(2);
 		}
 	}
@@ -51,7 +50,6 @@ void	check_walls(char **map_matrix, t_map *map, t_win *so_long)
 		else
 		{
 			free_matrix(map_matrix);
-			free(map);
 			error(3);
 		}
 	}
@@ -63,7 +61,6 @@ void	check_walls(char **map_matrix, t_map *map, t_win *so_long)
 		else
 		{
 			free_matrix(map_matrix);
-			free(map);
 			error(3);
 		}
 	}

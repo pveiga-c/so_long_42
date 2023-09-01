@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:44:28 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/26 16:59:51 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/01 19:40:24 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ void	error(int num)
 		write(1, "Error\nNumber of collectibles must be at least 1\n", 49);
 	if (num == 7)
 		write(1, "Error\nNo Solution on Map!\n", 27);
+	if (num == 8)
+		write(1, "Error\nMap does not exist\n", 26);
+	if (num == 9)
+		write(1, "Error\nEmpty file\n", 18);
 	exit(num);
 }
 
@@ -36,19 +40,16 @@ void	check_num_components(char **map_matrix, t_map *map)
 	if (map->player != 1)
 	{
 		free_matrix(map_matrix);
-		free(map);
 		error(4);
 	}
 	if (map->exit != 1)
 	{
 		free_matrix(map_matrix);
-		free(map);
 		error(5);
 	}
 	if (map->collectible < 1)
 	{
 		free_matrix(map_matrix);
-		free(map);
 		error(6);
 	}
 }

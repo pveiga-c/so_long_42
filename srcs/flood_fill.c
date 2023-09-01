@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:27:26 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/26 17:00:03 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/01 18:40:06 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	check_componentes_flood_fill(char **map_matrix, char **temp_matrix,
 			{
 				free_matrix(temp_matrix);
 				free_matrix(map_matrix);
-				free(map);
 				error(7);
 			}
 			j++;

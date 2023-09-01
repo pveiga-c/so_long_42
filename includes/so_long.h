@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/01 08:54:43 by correia          ###   ########.fr       */
+/*   Updated: 2023/09/01 20:28:04 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 # define A 97
 # define S 115
 # define D 100
+# define UP	13
+# define DOWN 1
+# define LEFT 0
+# define RIGHT 2
 
 typedef struct s_pos
 {
@@ -61,13 +65,13 @@ typedef struct s_win
 	void	*win_ptr;
 	char	**matrix;
 	char	**temp_matrix;
-	t_map	*map;
+	t_map	map;
 	t_img	*img;
 }			t_win;
 
 /*  so_long  */
 
-void		game_init(t_win *so_long);
+void		game_init(t_win so_long);
 int			main(int argc, char **argv);
 
 /* checks */
@@ -102,13 +106,21 @@ void		check_componentes_flood_fill(char **map_matrix, char **temp_matix,
 
 /* xpm */
 				
-static void	put_img(t_win *so_long, void *img, int x, int y);
-void		draw_imgs(t_win *so_long);
-void		images(t_win *so_long);
+static void	put_img(t_win so_long, void *img, int x, int y);
+void		draw_imgs(t_win so_long);
+void		insert_images(t_win so_long);
 
 
 int			exit_so_long(t_win *so_long);
 int			load_keys(int keycode, t_win *win);
-int 		on_keypress(int keysym, t_win *so_long);
-void        move_player_column(t_win *so_long, int y_move, t_pos pos);
+void		*insert_new_images(t_win so_long, char *path);
+void 		move_player_column(t_win *so_long, int y_move);
+void 		move_player_lines(t_win *so_long, int x_move);
+void		move_up_down(t_win *so_long, int y_move);
+void		move_right_left(t_win *so_long, int x_move);
+void		check_copy_map(t_win *so_long);
+
+
+void		print_map(char **map);
+
 #endif

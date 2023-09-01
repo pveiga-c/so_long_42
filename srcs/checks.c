@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:48:17 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/26 16:59:39 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/01 20:52:09 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@ int	check_file(char *av)
 		error(1);
 	return (0);
 }
+void	check_copy_map(t_win *so_long)
+{
+	int i;
+	int j;
+
+	i = sizeof(so_long->matrix) / sizeof(so_long->matrix[0]);
+	printf("%lu\n",sizeof(so_long->matrix));
+	printf("%lu\n",sizeof(so_long->matrix[0]));
+	printf("%d\n", i);
+	printf("%d\n", so_long->map.height);
+}
 
 char	**copy_map(char *av, t_win *so_long)
 {
@@ -31,12 +42,11 @@ char	**copy_map(char *av, t_win *so_long)
 	char	*line;
 	char	**map_matrix;
 	char	*temp_map;
-	int		h;
 
-	h = 0;
+	so_long->map.height = 0;
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
-		return (NULL);
+		error(8);
 	temp_map = ft_calloc(1, 1);
 	while (1)
 	{
@@ -45,9 +55,8 @@ char	**copy_map(char *av, t_win *so_long)
 			break ;
 		temp_map = ft_strjoin(temp_map, line);
 		free(line);
-		h++;
+		so_long->map.height++;
 	}
-	so_long->map->height = h;
 	map_matrix = ft_split(temp_map, '\n');
 	free(temp_map);
 	close(fd);
@@ -61,13 +70,13 @@ void	copy_matrix(char **map_matrix, t_win *so_long)
 
 	i = 0;
 	so_long->temp_matrix = (char **)malloc(sizeof(char *)
-			* (so_long->map->height + 1));
+			* (so_long->map.height + 1));
 	if (so_long->temp_matrix == NULL)
 	{
 		perror("Erro ao alocar memoria.");
 		exit(1);
 	}
-	while (i != so_long->map->height)
+	while (i != so_long->map.height)
 	{
 		so_long->temp_matrix[i] = ft_strdup(map_matrix[i]);
 		i++;
