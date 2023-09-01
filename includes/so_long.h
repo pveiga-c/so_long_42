@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/31 19:48:03 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/01 08:54:43 by correia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,5 @@ void		images(t_win *so_long);
 int			exit_so_long(t_win *so_long);
 int			load_keys(int keycode, t_win *win);
 int 		on_keypress(int keysym, t_win *so_long);
-void 		move_player(t_win *so_long);
-
+void        move_player_column(t_win *so_long, int y_move, t_pos pos);
 #endif

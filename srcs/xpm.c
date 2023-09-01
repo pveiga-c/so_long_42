@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xpm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 16:42:23 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/31 16:45:55 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/01 09:04:15 by correia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ void	draw_imgs(t_win *so_long)
 		}
 		i++;
 	}
+}
+void	*new_file_img(char *path, t_win so_long)
+{
+	void	*img;
+
+	img = mlx_xpm_file_to_image(so_long.mlx_ptr, path, &so_long.map->pos.w, &so_long.map->pos.h);
+	if (!img)
+		error(1); /* corrigir este erro*/
+	return (img);
 }
 
 void	images(t_win *so_long)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:05:55 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/31 19:48:41 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/01 09:06:09 by correia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,26 @@ int	load_keys(int keycode, t_win *so_long)
 {
 	if (keycode == ESC)
 		exit_so_long(so_long);
+	else if(keycode == W)
+		move_player_column(so_long, - 1, (t_pos){so_long->map->pos.h - 1, so_long->map->pos.w});
 	else if(keycode == S)
-		move_player(so_long);
+		move_playe_column(so_long, 1, (t_pos){so_long->map->pos.h + 1, so_long->map->pos.w});
+	else if(keycode == A)
+		move_player_lines(so_long, - 1, (t_pos){so_long->map->pos.h, so_long->map->pos.w - 1});
+	else if(keycode == D)
+		move_player_lines(so_long, 1, (t_pos){so_long->map->pos.h, so_long->map->pos.w + 1});	
 	return (0);
 }
 
-void move_player(t_win *so_long)
+void move_player_column(t_win *so_long, int y_move, t_pos pos)
 {
-	
+	mlx_destroy_image(so_long->mlx_ptr, so_long->img->player);
+	if(y_move == 1)
+		so_long->img->player = images("./xpm/player_down.xpm", &so_long);
+	if(so_long->matrix[pos.h][pos.w] != '1' && so_long->matrix[pos.h][pos.w] != 'E')
+	{
+		
+	}
 }
 
 int	main(int argc, char **argv)
