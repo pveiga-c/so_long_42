@@ -56,6 +56,14 @@ SRCS			= 		  ft_atoi.c \
 						  ft_lstmap.c \
 						  get_next_line.c \
 						  get_next_line_utils.c \
+						  ft_printf.c \
+						  ft_putchar.c \
+						  ft_putnbr.c \
+						  ft_put_nbr_lower.c \
+						  ft_put_nbr_upper.c \
+						  ft_put_point_hexa.c \
+						  ft_putstr.c \
+						  ft_put_unsig_dec.c \
 						  						 	  
 OBJ_DIR = objs
 

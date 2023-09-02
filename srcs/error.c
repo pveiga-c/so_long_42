@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:44:28 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/01 19:40:24 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/02 16:10:50 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,29 @@
 void	error(int num)
 {
 	if (num == 1)
-		write(1, "Error\nMap name has to end in .ber\n", 35);
+		ft_printf("Error\nMap name has to end in .ber\n");
 	if (num == 2)
-		write(1, "Error\nMap has to be rectangular\n", 33);
+		ft_printf("Error\nMap has to be rectangular\n");
 	if (num == 3)
-		write(1, "Error\nThe map must be closed/surrounded by walls\n", 50);
+		ft_printf("Error\nThe map must be closed/surrounded by walls\n");
 	if (num == 4)
-		write(1, "Error\nNumber of players must be 1\n", 35);
+		ft_printf("Error\nNumber of players must be 1\n");
 	if (num == 5)
-		write(1, "Error\nNumber of exits must be 1\n", 33);
+		ft_printf("Error\nNumber of exits must be 1\n");
 	if (num == 6)
-		write(1, "Error\nNumber of collectibles must be at least 1\n", 49);
+		ft_printf("Error\nNumber of collectibles must be at least 1\n");
 	if (num == 7)
-		write(1, "Error\nNo Solution on Map!\n", 27);
+		ft_printf("Error\nNo Solution on Map!\n");
 	if (num == 8)
-		write(1, "Error\nMap does not exist\n", 26);
+		ft_printf("Error\nMap does not exist\n");
 	if (num == 9)
-		write(1, "Error\nEmpty file\n", 18);
+		ft_printf("Error\nEmpty file\n");
 	exit(num);
 }
 
 void	check_num_components(char **map_matrix, t_map *map)
 {
+	
 	if (map->player != 1)
 	{
 		free_matrix(map_matrix);
@@ -65,4 +66,22 @@ void	free_matrix(char **str)
 		i++;
 	}
 	free(str);
+}
+
+int	exit_so_long(t_win *so_long)
+{
+	free_matrix(so_long->matrix);
+	mlx_destroy_image(so_long->mlx_ptr, so_long->img->collectible);
+	mlx_destroy_image(so_long->mlx_ptr, so_long->img->exit);
+	mlx_destroy_image(so_long->mlx_ptr, so_long->img->player);
+	mlx_destroy_image(so_long->mlx_ptr, so_long->img->floor);
+	mlx_destroy_image(so_long->mlx_ptr, so_long->img->wall);
+	free(so_long->mlx_ptr);
+	exit(0);
+}
+
+void	total_of_moves(t_win *so_long)
+{
+	so_long->moves_player++;
+	ft_printf("Total of moves: %d\n", so_long->moves_player);
 }

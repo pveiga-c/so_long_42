@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:48:17 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/01 20:52:09 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/02 15:58:09 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,6 @@ int	check_file(char *av)
 		error(1);
 	return (0);
 }
-void	check_copy_map(t_win *so_long)
-{
-	int i;
-	int j;
-
-	i = sizeof(so_long->matrix) / sizeof(so_long->matrix[0]);
-	printf("%lu\n",sizeof(so_long->matrix));
-	printf("%lu\n",sizeof(so_long->matrix[0]));
-	printf("%d\n", i);
-	printf("%d\n", so_long->map.height);
-}
-
 char	**copy_map(char *av, t_win *so_long)
 {
 	int		fd;
