@@ -6,29 +6,37 @@
 #    By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 15:16:12 by pveiga-c          #+#    #+#              #
-#    Updated: 2023/09/02 16:43:47 by pveiga-c         ###   ########.fr        #
+#    Updated: 2023/09/02 17:32:12 by pveiga-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME_PROJECT 	= So Long
+NAME_PROJECT 	   = So Long
 
-NAME			= so_long
+NAME_PROJECT_BONUS = So Long Bonus
 
-SRCS			= $(wildcard srcs/*.c)
+NAME			   = so_long
 
-OBJS			= $(SRCS:.c=.o)
+NAME_BONUS		   = so_long_bonus
 
-CC 				= cc 
+SRCS			   = $(wildcard srcs/*.c)
 
-CFLAGS 			= -Wall -Wextra -Werror  -Imlx_linux -g # -fsanitize=address
+SRCS_BONUS		   = $(wildcard bonus/srcs/*.c)
 
-MLX_L			= -L mlx_linux -lmlx -lXext -lX11
+OBJS			   = $(SRCS:.c=.o)
 
-LIBFT_PATH 		= libft
+OBJS_BONUS 		   = $(SRCS_BONUS:.c=.o)
 
-LIBFT_LIB	= $(LIBFT_PATH)/libft.a
+CC 				   = cc 
 
-RM 				= rm -f
+CFLAGS 			   = -Wall -Wextra -Werror  -Imlx_linux -g # -fsanitize=address
+
+MLX_L			   = -L mlx_linux -lmlx -lXext -lX11
+
+LIBFT_PATH 		   = libft
+
+LIBFT_LIB	       = $(LIBFT_PATH)/libft.a
+
+RM 				   = rm -f
 
 .c.o:
 			@$(CC) -c $< -o $@
@@ -43,9 +51,21 @@ $(NAME):	$(OBJS)
 #			clear
 			@echo "$(BLUE)Compilation $(NAME_PROJECT) $(GREEN)  [OK]$(RESET)"
 			@echo "$(BLUE)Successfully built $(GREEN)   [OK]$(RESET)"
-	
+
+bonus:	$(LIBFT_LIB) $(NAME_BONUS)
+
+$(NAME_BONUS):	$(OBJS_BONUS)
+			@make -C mlx_linux
+#			clear
+			@make -C $(LIBFT_PATH)
+			$(CC) $(CFLAGS) $(OBJS_BONUS) $(MLX_L) $(LIBFT_LIB) -o $(NAME_BONUS)	
+#			clear
+			@echo "$(BLUE)Compilation $(NAME_PROJECT_BONUS) $(GREEN)  [OK]$(RESET)"
+			@echo "$(BLUE)Successfully built $(GREEN)   [OK]$(RESET)"
+			
 clean:		
 	$(RM) $(OBJS)
+	$(RM) $(OBJS_BONUS)
 	@make clean -C $(LIBFT_PATH)
 	@make clean -C mlx_linux
 	clear
@@ -53,6 +73,7 @@ clean:
 
 fclean: 	clean
 	$(RM) $(NAME)
+	$(RM) $(NAME_BONUS)
 	clear
 	@echo "$(CYAN) [$(NAME_PROJECT)] $(RED)Objects Removed! $(RESET)"
 	@echo "$(CYAN) [$(NAME_PROJECT)] $(RED)"Removed!" $(RESET)"
