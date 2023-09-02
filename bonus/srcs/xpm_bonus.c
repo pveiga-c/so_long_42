@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xpm.c                                              :+:      :+:    :+:   */
+/*   xpm_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 16:42:23 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 17:07:00 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/02 19:03:53 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	draw_imgs(t_win so_long)
 				put_img(so_long, so_long.img->floor, j, i);
 			else if (so_long.matrix[i][j] == '0')
 				put_img(so_long, so_long.img->floor, j, i);
+			else if (so_long.matrix[i][j] == 'M')
+				put_img(so_long, so_long.img->enemy, j, i);	
 		}
 	}
 }
@@ -54,7 +56,7 @@ void	*insert_new_images(t_win so_long, char *path)
 	img = mlx_xpm_file_to_image(so_long.mlx_ptr, path, &so_long.map.pos.w,
 			&so_long.map.pos.h);
 	if (!img)
-		error(1); /* corrigir este erro*/
+		error(9); /* corrigir este erro*/
 	return (img);
 }
 
@@ -66,4 +68,5 @@ void	insert_images(t_win so_long)
 	so_long.img->collectible = insert_new_images(so_long,
 													"./xpm/collectible.xpm");
 	so_long.img->exit = insert_new_images(so_long, "./xpm/exit.xpm");
+	so_long.img->enemy = insert_new_images(so_long, "./xpm/enemy1.xpm");
 }

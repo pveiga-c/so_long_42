@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:44:28 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 17:06:23 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/02 18:53:30 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	error(int num)
 		ft_printf("Error\nMap does not exist\n");
 	if (num == 9)
 		ft_printf("Error\nEmpty file\n");
+	if (num == 10)
+		ft_printf("Error\nNumber of enemies must be greater than 1\n");
 	exit(num);
 }
 
@@ -52,6 +54,11 @@ void	check_num_components(char **map_matrix, t_map *map)
 	{
 		free_matrix(map_matrix);
 		error(6);
+	}
+	if (map->enemy < 1)
+	{
+		free_matrix(map_matrix);
+		error(10);
 	}
 }
 

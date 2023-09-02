@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 16:47:10 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/02 18:58:32 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_img
 	void	*collectible;
 	void	*exit;
 	void	*floor;
+	void	*enemy;
 }			t_img;
 
 typedef struct s_map
@@ -51,6 +52,7 @@ typedef struct s_map
 	int		player;
 	int		exit;
 	int		collectible;
+	int		enemy;
 	t_pos	pos;
 
 }			t_map;

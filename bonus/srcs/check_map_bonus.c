@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:32:20 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 17:05:48 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/02 19:00:09 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,12 @@ void	check_componentes(char **map_matrix, t_map *map, t_win *so_long)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	map->player = 0;
 	map->exit = 0;
 	map->collectible = 0;
-	while (i != map->height - 1)
+	map->enemy = 0;
+	while (++i != map->height - 1)
 	{
 		j = 1;
 		while (j != map->width - 1)
@@ -87,9 +88,10 @@ void	check_componentes(char **map_matrix, t_map *map, t_win *so_long)
 				map->exit++;
 			if (map_matrix[i][j] == 'C')
 				map->collectible++;
+			if (map_matrix[i][j] == 'M')
+				map->enemy++;
 			j++;
 		}
-		i++;
 	}
 	check_num_components(map_matrix, map);
 }
