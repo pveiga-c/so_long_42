@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves.c                                            :+:      :+:    :+:   */
+/*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 15:36:18 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 17:06:19 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/03 11:31:44 by correia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	move_up_down(t_win *so_long, int y_move)
 		so_long->map.pos.h += y_move;
 		so_long->matrix[so_long->map.pos.h][so_long->map.pos.w] = 'P';
 	}
+	else if (so_long->matrix[so_long->map.pos.h + y_move][so_long->map.pos.w] == 'M')
+		exit_so_long(so_long);
 	total_of_moves(so_long);
 }
 
@@ -104,5 +106,7 @@ void	move_right_left(t_win *so_long, int x_move)
 		so_long->map.pos.w += x_move;
 		so_long->matrix[so_long->map.pos.h][so_long->map.pos.w] = 'P';
 	}
+	else if (so_long->matrix[so_long->map.pos.h][so_long->map.pos.w + x_move] == 'M')
+		exit_so_long(so_long);
 	total_of_moves(so_long);
 }

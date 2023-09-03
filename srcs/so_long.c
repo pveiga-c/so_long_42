@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:05:55 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 15:36:30 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/03 10:34:43 by correia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ void	game_init(t_win so_long)
 	so_long.moves_player = 0;
 	insert_images(so_long);
 	draw_imgs(so_long);
-	mlx_hook(so_long.win_ptr, KeyRelease, KeyReleaseMask, load_keys, &so_long);
-	mlx_hook(so_long.win_ptr, DestroyNotify, StructureNotifyMask, exit_so_long, &so_long);
+	mlx_hook(so_long.win_ptr, 3, 1L<<1, load_keys, &so_long);
+	mlx_hook(so_long.win_ptr, 17, 1L<<17, exit_so_long, &so_long);
+	
 	mlx_loop(so_long.mlx_ptr);
 }
 

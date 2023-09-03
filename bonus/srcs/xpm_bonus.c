@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xpm_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 16:42:23 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 19:03:53 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/03 10:53:17 by correia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,17 @@ void	*insert_new_images(t_win so_long, char *path)
 	img = mlx_xpm_file_to_image(so_long.mlx_ptr, path, &so_long.map.pos.w,
 			&so_long.map.pos.h);
 	if (!img)
-		error(9); /* corrigir este erro*/
+		error(9); 
 	return (img);
 }
 
 void	insert_images(t_win so_long)
 {
-	so_long.img->player = insert_new_images(so_long, "./xpm/player_down.xpm");
-	so_long.img->wall = insert_new_images(so_long, "./xpm/wall.xpm");
-	so_long.img->floor = insert_new_images(so_long, "./xpm/floor.xpm");
+	so_long.img->player = insert_new_images(so_long, "./bonus/xpm/player_down.xpm");
+	so_long.img->wall = insert_new_images(so_long, "./bonus/xpm/wall.xpm");
+	so_long.img->floor = insert_new_images(so_long, "./bonus/xpm/floor.xpm");
 	so_long.img->collectible = insert_new_images(so_long,
-													"./xpm/collectible.xpm");
-	so_long.img->exit = insert_new_images(so_long, "./xpm/exit.xpm");
-	so_long.img->enemy = insert_new_images(so_long, "./xpm/enemy1.xpm");
+													"./bonus/xpm/collectible.xpm");
+	so_long.img->exit = insert_new_images(so_long, "./bonus/xpm/exit.xpm");
+	so_long.img->enemy = insert_new_images(so_long, "./bonus/xpm/enemy1.xpm");
 }
