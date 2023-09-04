@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:48:17 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/04 19:10:46 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 19:29:24 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_new_line(char *av)
 {
 	int		fd;
 	char	*line;
-	int cont;
+	int		cont;
 
 	cont = 0;
 	fd = open(av, O_RDONLY);
@@ -44,7 +44,7 @@ void	check_new_line(char *av)
 			cont = 1;
 		free(line);
 	}
-	if(cont == 1)
+	if (cont == 1)
 	{
 		close(fd);
 		error(2);
@@ -85,8 +85,8 @@ void	copy_matrix(char **map_matrix, t_win *so_long)
 	int	j;
 
 	i = 0;
-	so_long->temp_matrix = (char **)malloc(sizeof(char *)
-			* (so_long->map.height + 1));
+	so_long->temp_matrix = (char **)malloc(sizeof(char *) * (so_long->map.height
+				+ 1));
 	if (so_long->temp_matrix == NULL)
 	{
 		perror("Erro ao alocar memoria.");

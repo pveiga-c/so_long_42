@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:48:17 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/04 18:02:58 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 19:29:41 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,26 @@ void	check_new_line(char *av)
 {
 	int		fd;
 	char	*line;
-	char	*temp_map;
+	int		cont;
 
+	cont = 0;
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 		error(8);
-	temp_map = ft_calloc(1, 1);
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
 		if (*line == '\n')
-		{
-			free(temp_map);
-			free(line);
-			close(fd);
-			error(2);
-		}
-		temp_map = ft_strjoin(temp_map, line);
+			cont = 1;
 		free(line);
 	}
-	free(temp_map);
+	if (cont == 1)
+	{
+		close(fd);
+		error(2);
+	}
 	close(fd);
 }
 
