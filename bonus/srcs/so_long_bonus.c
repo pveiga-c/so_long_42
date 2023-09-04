@@ -6,7 +6,7 @@
 /*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:05:55 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/03 11:54:32 by correia          ###   ########.fr       */
+/*   Updated: 2023/09/04 08:59:51 by correia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	game_init(t_win so_long)
 	insert_images(so_long);
 	draw_imgs(so_long);
 	mlx_hook(so_long.win_ptr, KeyRelease, KeyReleaseMask, load_keys, &so_long);
-	mlx_loop_hook(so_long.mlx_ptr, enemy, &so_long);
+	mlx_loop_hook(so_long.mlx_ptr, spawn_enemies, &so_long);
 	mlx_hook(so_long.win_ptr, DestroyNotify, StructureNotifyMask, exit_so_long, &so_long);
 	mlx_loop(so_long.mlx_ptr);
 }
@@ -32,16 +32,37 @@ void	game_init(t_win so_long)
 {
 	
 }*/
+
 char	*spawn_enemies(t_win	so_long)
 {
-	int	i;
+	//int	i;
 
-	enemies = malloc(sizeof(char) * so_long->map->enemy);
-	i = so_long->map->enemy - 1;
+	//enemies = malloc(sizeof(char) * so_long.map->enemy);
+	//i = so_long.map->enemy - 1;
+	display_status(&so_long);
+/*
 	while(i >= 0)
 	{
 		
-	}
+	}*/
+}
+
+void	display_status(t_win *so_long)
+{
+	char	*str;
+
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 32, 33, 0x00000000, "Player moves: ");
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 32, 32, 0x00FFFFFF, "Player moves: ");
+	str = ft_itoa(so_long->moves_player);
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 96, 33, 0x00000000,str);
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 96, 32, 0x00FFFFFF, str);
+	free (str);
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 32, 49, 0x00000000, "Steps taken: ");
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 32, 48, 0x00FFFFFF, "Steps taken: ");
+	str = ft_itoa(so_long->map.collectible);
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 120, 49, 0x00000000, str);
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 120, 48, 0x00FFFFFF, str);
+	free (str);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/03 11:45:42 by correia          ###   ########.fr       */
+/*   Updated: 2023/09/04 08:51:33 by correia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_win
 	int		moves_player;
 	t_map	map;
 	t_img	*img;
-	char	*enemy
+	char	*enemy;
 }			t_win;
 
 /*  so_long  */
@@ -119,5 +119,7 @@ void		move_player_column(t_win *so_long, int y_move);
 void		move_player_lines(t_win *so_long, int x_move);
 void		move_up_down(t_win *so_long, int y_move);
 void		move_right_left(t_win *so_long, int x_move);
+void		display_status(t_win *so_long);
+char		*spawn_enemies(t_win	so_long);
 
 #endif
