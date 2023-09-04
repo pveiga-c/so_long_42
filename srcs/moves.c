@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 15:36:18 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 15:58:30 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 18:14:14 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ void	move_player_column(t_win *so_long, int y_move)
 	pos = so_long->map.pos;
 	mlx_destroy_image(so_long->mlx_ptr, so_long->img->player);
 	if (y_move == 1)
-		so_long->img->player = insert_new_images(*so_long,
-				"./xpm/player_down.xpm");
+		so_long->img->player = insert_new_images(*so_long, \
+		"./xpm/player_down.xpm");
 	else
-		so_long->img->player = insert_new_images(*so_long,
-				"./xpm/player_up.xpm");
+		so_long->img->player = insert_new_images(*so_long, \
+	"./xpm/player_up.xpm");
 	if (so_long->matrix[pos.h + y_move][pos.w] != '1' && so_long->matrix[pos.h
 		+ y_move][pos.w] != 'E')
 		move_up_down(so_long, y_move);
@@ -55,11 +55,11 @@ void	move_player_lines(t_win *so_long, int x_move)
 	pos = so_long->map.pos;
 	mlx_destroy_image(so_long->mlx_ptr, so_long->img->player);
 	if (x_move == 1)
-		so_long->img->player = insert_new_images(*so_long,
-				"./xpm/player_right.xpm");
+		so_long->img->player = insert_new_images(*so_long, \
+		"./xpm/player_right.xpm");
 	else
-		so_long->img->player = insert_new_images(*so_long,
-				"./xpm/player_left.xpm");
+		so_long->img->player = insert_new_images(*so_long, \
+		"./xpm/player_left.xpm");
 	if (so_long->matrix[pos.h][pos.w + x_move] != '1'
 		&& so_long->matrix[pos.h][pos.w + x_move] != 'E')
 		move_right_left(so_long, x_move);
@@ -97,8 +97,8 @@ void	move_right_left(t_win *so_long, int x_move)
 		so_long->map.pos.w += x_move;
 		so_long->matrix[so_long->map.pos.h][so_long->map.pos.w] = 'P';
 	}
-	else if (so_long->matrix[so_long->map.pos.h][so_long->map.pos.w
-			+ x_move] == '0')
+	else if (so_long->matrix[so_long->map.pos.h][so_long->map.pos.w \
+	+ x_move] == '0')
 	{
 		so_long->matrix[so_long->map.pos.h][so_long->map.pos.w] = '0';
 		so_long->map.pos.w += x_move;

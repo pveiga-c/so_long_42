@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   checks_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:48:17 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 17:06:24 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 18:02:58 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,36 @@ int	check_file(char *av)
 		error(1);
 	return (0);
 }
+
+void	check_new_line(char *av)
+{
+	int		fd;
+	char	*line;
+	char	*temp_map;
+
+	fd = open(av, O_RDONLY);
+	if (fd == -1)
+		error(8);
+	temp_map = ft_calloc(1, 1);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		if (*line == '\n')
+		{
+			free(temp_map);
+			free(line);
+			close(fd);
+			error(2);
+		}
+		temp_map = ft_strjoin(temp_map, line);
+		free(line);
+	}
+	free(temp_map);
+	close(fd);
+}
+
 char	**copy_map(char *av, t_win *so_long)
 {
 	int		fd;

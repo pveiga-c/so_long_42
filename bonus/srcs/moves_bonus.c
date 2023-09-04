@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 15:36:18 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/03 11:31:44 by correia          ###   ########.fr       */
+/*   Updated: 2023/09/04 18:07:10 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ void	move_up_down(t_win *so_long, int y_move)
 		so_long->map.pos.h += y_move;
 		so_long->matrix[so_long->map.pos.h][so_long->map.pos.w] = 'P';
 	}
-	else if (so_long->matrix[so_long->map.pos.h + y_move][so_long->map.pos.w] == 'M')
+	else if (so_long->matrix[so_long->map.pos.h + y_move] \
+	[so_long->map.pos.w] == 'M')
 		exit_so_long(so_long);
 	total_of_moves(so_long);
 }
@@ -99,14 +100,15 @@ void	move_right_left(t_win *so_long, int x_move)
 		so_long->map.pos.w += x_move;
 		so_long->matrix[so_long->map.pos.h][so_long->map.pos.w] = 'P';
 	}
-	else if (so_long->matrix[so_long->map.pos.h][so_long->map.pos.w
-			+ x_move] == '0')
+	else if (so_long->matrix[so_long->map.pos.h][so_long->map.pos.w \
+	+ x_move] == '0')
 	{
 		so_long->matrix[so_long->map.pos.h][so_long->map.pos.w] = '0';
 		so_long->map.pos.w += x_move;
 		so_long->matrix[so_long->map.pos.h][so_long->map.pos.w] = 'P';
 	}
-	else if (so_long->matrix[so_long->map.pos.h][so_long->map.pos.w + x_move] == 'M')
+	else if (so_long->matrix[so_long->map.pos.h][so_long->map.pos.w + \
+	x_move] == 'M')
 		exit_so_long(so_long);
 	total_of_moves(so_long);
 }

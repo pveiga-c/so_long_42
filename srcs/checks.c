@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:48:17 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 15:58:09 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 18:14:31 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	check_file(char *av)
 		error(1);
 	return (0);
 }
+
 char	**copy_map(char *av, t_win *so_long)
 {
 	int		fd;

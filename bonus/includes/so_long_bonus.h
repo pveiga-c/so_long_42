@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/04 08:51:33 by correia          ###   ########.fr       */
+/*   Updated: 2023/09/04 18:10:42 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_win
 	t_map	map;
 	t_img	*img;
 	char	*enemy;
+	int		frame;
 }			t_win;
 
 /*  so_long  */
@@ -80,6 +81,7 @@ int			check_file(char *av);
 char		**copy_map(char *av, t_win *so_long);
 void		copy_matrix(char **map_matrix, t_win *so_long);
 void		find_pos(char **map_matrix, t_map *map);
+void		check_new_line(char *av);
 
 /* check_map */
 
@@ -121,5 +123,8 @@ void		move_up_down(t_win *so_long, int y_move);
 void		move_right_left(t_win *so_long, int x_move);
 void		display_status(t_win *so_long);
 char		*spawn_enemies(t_win	so_long);
+int			read_frame(t_win	*so_long);
+void		draw_loop(t_win *so_long);
+void		put_img_2(t_win so_long, int i, int j);
 
 #endif

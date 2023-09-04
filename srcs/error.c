@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:44:28 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 16:10:50 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 18:14:24 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	error(int num)
 
 void	check_num_components(char **map_matrix, t_map *map)
 {
-	
 	if (map->player != 1)
 	{
 		free_matrix(map_matrix);

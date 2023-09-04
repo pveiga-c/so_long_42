@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 16:42:23 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 15:42:55 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 18:15:18 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	put_img(t_win so_long, void *img, int x, int y)
 {
-	mlx_put_image_to_window(so_long.mlx_ptr, so_long.win_ptr, img, x * 64, y
-			* 64);
+	mlx_put_image_to_window(so_long.mlx_ptr, so_long.win_ptr, img, x * 64, y \
+	* 64);
 }
 
 void	draw_imgs(t_win so_long)
@@ -54,7 +54,7 @@ void	*insert_new_images(t_win so_long, char *path)
 	img = mlx_xpm_file_to_image(so_long.mlx_ptr, path, &so_long.map.pos.w,
 			&so_long.map.pos.h);
 	if (!img)
-		error(1); /* corrigir este erro*/
+		error(1);
 	return (img);
 }
 
@@ -63,7 +63,7 @@ void	insert_images(t_win so_long)
 	so_long.img->player = insert_new_images(so_long, "./xpm/player_down.xpm");
 	so_long.img->wall = insert_new_images(so_long, "./xpm/wall.xpm");
 	so_long.img->floor = insert_new_images(so_long, "./xpm/floor.xpm");
-	so_long.img->collectible = insert_new_images(so_long,
-													"./xpm/collectible.xpm");
+	so_long.img->collectible = insert_new_images(so_long, \
+	"./xpm/collectible.xpm");
 	so_long.img->exit = insert_new_images(so_long, "./xpm/exit1.xpm");
 }

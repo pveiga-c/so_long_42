@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:05:55 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/03 10:34:43 by correia          ###   ########.fr       */
+/*   Updated: 2023/09/04 18:13:28 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ void	game_init(t_win so_long)
 	so_long.moves_player = 0;
 	insert_images(so_long);
 	draw_imgs(so_long);
-	mlx_hook(so_long.win_ptr, 3, 1L<<1, load_keys, &so_long);
-	mlx_hook(so_long.win_ptr, 17, 1L<<17, exit_so_long, &so_long);
-	
+	mlx_hook(so_long.win_ptr, 3, 1L << 1, load_keys, &so_long);
+	mlx_hook(so_long.win_ptr, 17, 1L << 17, exit_so_long, &so_long);
 	mlx_loop(so_long.mlx_ptr);
 }
-
 
 int	main(int argc, char **argv)
 {
@@ -34,16 +32,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 2 && check_file(argv[1]))
 	{
-		// so_long->map = malloc(sizeof(t_map));
-		// so_long.img = malloc(sizeof(t_img));
-		// if (so_long.map == NULL)
-		// {
-		// 	perror("Erro ao alocar memoria.");
-		// 	return (1);
-		// }
-		
 		so_long.matrix = copy_map(argv[1], &so_long);
-		// check_copy_map(&so_long);
 		check_map(so_long.matrix, &so_long.map, &so_long);
 		game_init(so_long);
 		free_matrix(so_long.matrix);
@@ -51,20 +40,3 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
-
-
-/*
-prinf map
-
-while (i != map->height)
-	{
-		j = 0;
-		while (j != map->width)
-		{
-			printf("%c", so_long->temp_matrix[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-*/

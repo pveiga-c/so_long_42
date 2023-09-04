@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/02 15:44:10 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:08:59 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int			check_file(char *av);
 char		**copy_map(char *av, t_win *so_long);
 void		copy_matrix(char **map_matrix, t_win *so_long);
 void		find_pos(char **map_matrix, t_map *map);
+void		check_new_line(char *av);
 
 /* check_map */
 
