@@ -6,12 +6,16 @@
 /*   By: correia <correia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:05:55 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/04 08:59:51 by correia          ###   ########.fr       */
+/*   Updated: 2023/09/04 09:27:03 by correia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
+void	read_frame(t_win	*so_long)
+{
+	display_status(so_long);
+}
 void	game_init(t_win so_long)
 {
 	so_long.mlx_ptr = mlx_init();
@@ -20,19 +24,15 @@ void	game_init(t_win so_long)
 	so_long.img = malloc(sizeof(t_img));
 	so_long.moves_player = 0;
 	so_long.enemy = 0,
-	so_long.enemy = spawn_enemies(so_long);	
+	//so_long.enemy = spawn_enemies(so_long);	
 	insert_images(so_long);
 	draw_imgs(so_long);
 	mlx_hook(so_long.win_ptr, KeyRelease, KeyReleaseMask, load_keys, &so_long);
-	mlx_loop_hook(so_long.mlx_ptr, spawn_enemies, &so_long);
+	mlx_loop_hook(so_long.mlx_ptr, read_frame, &so_long);
 	mlx_hook(so_long.win_ptr, DestroyNotify, StructureNotifyMask, exit_so_long, &so_long);
 	mlx_loop(so_long.mlx_ptr);
 }
-/*void	enemy(t_win	*sio_long)
-{
-	
-}*/
-
+/*
 char	*spawn_enemies(t_win	so_long)
 {
 	//int	i;
@@ -40,28 +40,28 @@ char	*spawn_enemies(t_win	so_long)
 	//enemies = malloc(sizeof(char) * so_long.map->enemy);
 	//i = so_long.map->enemy - 1;
 	display_status(&so_long);
-/*
+
 	while(i >= 0)
 	{
 		
-	}*/
-}
+	}
+}*/
 
 void	display_status(t_win *so_long)
 {
 	char	*str;
 
-	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 32, 33, 0x00000000, "Player moves: ");
-	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 32, 32, 0x00FFFFFF, "Player moves: ");
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 32, 22, 0x00FF00, "Player moves: ");
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 32, 21, 0x00FF00, "Player moves: ");
 	str = ft_itoa(so_long->moves_player);
-	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 96, 33, 0x00000000,str);
-	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 96, 32, 0x00FFFFFF, str);
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 120, 22, 0x00FF00,str);
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 120, 21, 0x00FF00, str);
 	free (str);
-	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 32, 49, 0x00000000, "Steps taken: ");
-	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 32, 48, 0x00FFFFFF, "Steps taken: ");
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 32, 38, 0x00FF00, "Steps taken : ");
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 32, 37, 0x00FF00, "Steps taken : ");
 	str = ft_itoa(so_long->map.collectible);
-	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 120, 49, 0x00000000, str);
-	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 120, 48, 0x00FFFFFF, str);
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 120, 41, 0x00FF00, str);
+	mlx_string_put (so_long->mlx_ptr, so_long->win_ptr, 120, 40, 0x00FF00, str);
 	free (str);
 }
 
