@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:48:17 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/04 18:14:31 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 19:10:46 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,33 @@ int	check_file(char *av)
 	else
 		error(1);
 	return (0);
+}
+
+void	check_new_line(char *av)
+{
+	int		fd;
+	char	*line;
+	int cont;
+
+	cont = 0;
+	fd = open(av, O_RDONLY);
+	if (fd == -1)
+		error(8);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		if (*line == '\n')
+			cont = 1;
+		free(line);
+	}
+	if(cont == 1)
+	{
+		close(fd);
+		error(2);
+	}
+	close(fd);
 }
 
 char	**copy_map(char *av, t_win *so_long)

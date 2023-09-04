@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:05:55 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/04 18:13:28 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/04 18:26:51 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 2 && check_file(argv[1]))
 	{
+		check_new_line(argv[1]);
 		so_long.matrix = copy_map(argv[1], &so_long);
 		check_map(so_long.matrix, &so_long.map, &so_long);
 		game_init(so_long);
