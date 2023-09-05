@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 18:13:05 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/08/21 18:30:16 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/05 17:18:14 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen_gnl(const char *str)
 	size_t	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i] != '\0')
 		i++;
 	return (i);
@@ -28,13 +30,6 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	size_t	j;
 	char	*str;
 
-	if (!s1)
-	{
-		s1 = malloc(1 * sizeof(char));
-		s1[0] = '\0';
-	}
-	if (!s1 || !s2)
-		return (NULL);
 	str = malloc(sizeof(char) * ((ft_strlen_gnl(s1) + ft_strlen_gnl(s2)) + 1));
 	if (str == NULL)
 		return (NULL);
@@ -43,9 +38,12 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	if (s1)
 		while (s1[++i] != '\0')
 			str[i] = s1[i];
-	while (s2[j] != '\0')
-		str[i++] = s2[j++];
-	str[ft_strlen_gnl(s1) + ft_strlen_gnl(s2)] = '\0';
+	if (i == -1)
+		i = 0;
+	if (s2)
+		while (s2[j] != '\0')
+			str[i++] = s2[j++];
+	str[i] = '\0';
 	free(s1);
 	return (str);
 }

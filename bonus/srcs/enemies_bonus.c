@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:19:40 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/04 18:20:41 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/05 19:22:03 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 int	read_frame(t_win *so_long)
 {
-	if (so_long->frame > 6)
+	if (so_long->frame > 5)
 		so_long->frame = 1;
+	if (so_long->img->enemy)
+		mlx_destroy_image(so_long->mlx_ptr, so_long->img->enemy);
 	if (so_long->frame == 1)
 		so_long->img->enemy = insert_new_images(*so_long, \
 		"./bonus/xpm/enemy1.xpm");
@@ -31,9 +33,6 @@ int	read_frame(t_win *so_long)
 	else if (so_long->frame == 5)
 		so_long->img->enemy = insert_new_images(*so_long, \
 		"./bonus/xpm/enemy5.xpm");
-	else if (so_long->frame == 6)
-		so_long->img->enemy = insert_new_images(*so_long, \
-		"./bonus/xpm/enemy6.xpm");
 	usleep(100000);
 	so_long->frame++;
 	draw_imgs(*so_long);
@@ -66,4 +65,5 @@ void	values_init(t_win *so_long)
 {
 	so_long->moves_player = 0;
 	so_long->enemy = 0;
+	so_long->frame = 1;
 }

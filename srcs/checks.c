@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:48:17 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/04 19:29:24 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/05 17:20:19 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,26 @@ void	check_new_line(char *av)
 	int		fd;
 	char	*line;
 	int		cont;
+	int		line_count;
 
 	cont = 0;
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 		error(8);
+	line_count = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		if (*line == '\n')
+		if (*line == '\n' || !*line)
 			cont = 1;
+		else
+			line_count++;
 		free(line);
 	}
-	if (cont == 1)
-	{
-		close(fd);
+	if (cont == 1 || line_count == 0)
 		error(2);
-	}
 	close(fd);
 }
 

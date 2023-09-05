@@ -6,7 +6,7 @@
 #    By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 15:16:12 by pveiga-c          #+#    #+#              #
-#    Updated: 2023/09/04 18:53:55 by pveiga-c         ###   ########.fr        #
+#    Updated: 2023/09/05 17:49:43 by pveiga-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,10 +45,10 @@ all:		$(LIBFT_LIB) $(NAME)
 
 $(NAME):	$(OBJS)
 			@make -C mlx_linux
-			clear
+#			clear
 			@make -C $(LIBFT_PATH)
 			$(CC) $(CFLAGS) $(OBJS) $(MLX_L) $(LIBFT_LIB) -o $(NAME) 
-			clear
+#			clear
 			@echo "$(BLUE)Compilation $(NAME_PROJECT) $(GREEN)  [OK]$(RESET)"
 			@echo "$(BLUE)Successfully built $(GREEN)   [OK]$(RESET)"
 
@@ -56,10 +56,10 @@ bonus:	$(LIBFT_LIB) $(NAME_BONUS)
 
 $(NAME_BONUS):	$(OBJS_BONUS)
 			@make -C mlx_linux
-			clear
+#			clear
 			@make -C $(LIBFT_PATH)
 			$(CC) $(CFLAGS) $(OBJS_BONUS) $(MLX_L) $(LIBFT_LIB) -o $(NAME_BONUS)	
-			clear
+#			clear
 			@echo "$(BLUE)Compilation $(NAME_PROJECT_BONUS) $(GREEN)  [OK]$(RESET)"
 			@echo "$(BLUE)Successfully built $(GREEN)   [OK]$(RESET)"
 			

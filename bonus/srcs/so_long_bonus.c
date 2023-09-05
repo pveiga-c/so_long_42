@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:05:55 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/04 18:20:45 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/05 19:04:39 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int argc, char **argv)
 {
 	t_win	so_long;
 
+	if (argc != 2)
+		error(11);
 	if (argc == 2 && check_file(argv[1]))
 	{
 		check_new_line(argv[1]);

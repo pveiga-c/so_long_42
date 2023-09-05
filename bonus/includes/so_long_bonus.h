@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/04 18:10:42 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/05 18:01:21 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ int			main(int argc, char **argv);
 /* checks */
 
 int			check_file(char *av);
+void		check_new_line(char *av);
 char		**copy_map(char *av, t_win *so_long);
 void		copy_matrix(char **map_matrix, t_win *so_long);
 void		find_pos(char **map_matrix, t_map *map);
-void		check_new_line(char *av);
 
 /* check_map */
 
@@ -112,8 +112,9 @@ void		check_componentes_flood_fill(char **map_matrix, char **temp_matix,
 
 static void	put_img(t_win so_long, void *img, int x, int y);
 void		draw_imgs(t_win so_long);
-void		insert_images(t_win so_long);
+void		put_img_2(t_win so_long, int i, int j);
 void		*insert_new_images(t_win so_long, char *path);
+void		insert_images(t_win so_long);
 
 /* moves */
 int			load_keys(int keycode, t_win *win);
@@ -121,10 +122,10 @@ void		move_player_column(t_win *so_long, int y_move);
 void		move_player_lines(t_win *so_long, int x_move);
 void		move_up_down(t_win *so_long, int y_move);
 void		move_right_left(t_win *so_long, int x_move);
-void		display_status(t_win *so_long);
-char		*spawn_enemies(t_win	so_long);
+
+/* enemies */
 int			read_frame(t_win	*so_long);
-void		draw_loop(t_win *so_long);
-void		put_img_2(t_win so_long, int i, int j);
+void		display_status(t_win *so_long);
+void		values_init(t_win *so_long);
 
 #endif
