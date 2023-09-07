@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:32:20 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/05 16:30:02 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:02:06 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,27 @@
 
 void	check_map(char **map_matrix, t_map *map, t_win *so_long)
 {
+	int	i;
+	int	j;
+	
+	i = 0;
+	map->width = ft_strlen(map_matrix[0]);
+	while(i != map->height)
+	{
+		j = 0;
+		while(j != map->width)
+		{
+			if(map_matrix[i][j] != '1' && map_matrix[i][j] != '0' \
+			&& map_matrix[i][j] != 'E' && map_matrix[i][j] != 'C' \
+			&& map_matrix[i][j] != 'P')
+			{
+				free_matrix(map_matrix);
+				error(12);
+			}
+			j++;
+		}
+		i++;
+	}
 	check_retangular(map_matrix, map, so_long);
 	check_walls(map_matrix, map, so_long);
 	check_componentes(map_matrix, map, so_long);
@@ -24,7 +45,6 @@ void	check_retangular(char **map_matrix, t_map *map, t_win *so_long)
 {
 	int	i;
 
-	map->width = ft_strlen(map_matrix[0]);
 	i = 1;
 	while (i != map->height)
 	{

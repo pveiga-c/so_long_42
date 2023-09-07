@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:44:28 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/07 16:50:43 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:05:11 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	error(int num)
 		ft_printf("Error\nNumber of enemies must be greater than 1\n");
 	if (num == 11)
 		ft_printf("Error\nInvalid number of arguments!\n");
+	if (num == 12)
+		ft_printf("Error\nInvalid characters!\n");
 	exit(num);
 }
 
