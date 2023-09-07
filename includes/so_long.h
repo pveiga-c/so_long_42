@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/04 18:27:13 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:29:01 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ typedef struct s_win
 
 void		game_init(t_win so_long);
 int			main(int argc, char **argv);
-void		check_new_line(char *av);
+void		values_init(t_win so_long);
+char		*path_img(int num);
+void		images_check(t_win so_long);
 
 /* checks */
 

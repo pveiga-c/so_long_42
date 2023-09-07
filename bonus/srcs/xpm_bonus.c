@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 16:42:23 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/05 18:31:59 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/06 18:12:36 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	*insert_new_images(t_win so_long, char *path)
 	img = mlx_xpm_file_to_image(so_long.mlx_ptr, path, &so_long.map.pos.w,
 			&so_long.map.pos.h);
 	if (!img)
-		error(9);
+		exit_so_long(&so_long);
 	return (img);
 }
 

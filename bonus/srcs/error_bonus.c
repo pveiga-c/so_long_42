@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:44:28 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/05 19:05:20 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:50:43 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,23 @@ void	free_matrix(char **str)
 int	exit_so_long(t_win *so_long)
 {
 	free_matrix(so_long->matrix);
-	mlx_destroy_image(so_long->mlx_ptr, so_long->img->collectible);
-	mlx_destroy_image(so_long->mlx_ptr, so_long->img->exit);
-	mlx_destroy_image(so_long->mlx_ptr, so_long->img->player);
-	mlx_destroy_image(so_long->mlx_ptr, so_long->img->floor);
-	mlx_destroy_image(so_long->mlx_ptr, so_long->img->wall);
-	mlx_destroy_image(so_long->mlx_ptr, so_long->img->enemy);
+	if (so_long->img->collectible)
+		mlx_destroy_image(so_long->mlx_ptr, so_long->img->collectible);
+	if (so_long->img->exit)
+		mlx_destroy_image(so_long->mlx_ptr, so_long->img->exit);
+	if (so_long->img->player)
+		mlx_destroy_image(so_long->mlx_ptr, so_long->img->player);
+	if (so_long->img->floor)
+		mlx_destroy_image(so_long->mlx_ptr, so_long->img->floor);
+	if (so_long->img->wall)
+		mlx_destroy_image(so_long->mlx_ptr, so_long->img->wall);
+	if (so_long->img->enemy)
+		mlx_destroy_image(so_long->mlx_ptr, so_long->img->enemy);
 	mlx_destroy_window(so_long->mlx_ptr, so_long->win_ptr);
 	mlx_destroy_display(so_long->mlx_ptr);
 	free(so_long->mlx_ptr);
 	free(so_long->img);
-	exit(0);
+	exit(11);
 }
 
 void	total_of_moves(t_win *so_long)

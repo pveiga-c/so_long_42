@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:48:17 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/05 17:47:48 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:26:06 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ void	copy_matrix(char **map_matrix, t_win *so_long)
 	int	j;
 
 	i = 0;
-	so_long->temp_matrix = (char **)malloc(sizeof(char *)
-			* (so_long->map.height + 1));
+	so_long->temp_matrix = (char **)malloc(sizeof(char *) * (so_long->map.height
+				+ 1));
 	if (so_long->temp_matrix == NULL)
 	{
 		perror("Erro ao alocar memoria.");

@@ -6,7 +6,7 @@
 #    By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 15:16:12 by pveiga-c          #+#    #+#              #
-#    Updated: 2023/09/05 17:49:43 by pveiga-c         ###   ########.fr        #
+#    Updated: 2023/09/07 16:04:03 by pveiga-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJS_BONUS 		   = $(SRCS_BONUS:.c=.o)
 
 CC 				   = cc 
 
-CFLAGS 			   = -Wall -Wextra -Werror  -Imlx_linux -g # -fsanitize=address
+CFLAGS 			   = -g -d -Wall -Wextra -Werror  -Imlx_linux  # -fsanitize=address
 
 MLX_L			   = -L mlx_linux -lmlx -lXext -lX11
 

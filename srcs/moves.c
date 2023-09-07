@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 15:36:18 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/04 18:14:14 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/06 18:09:21 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	move_player_column(t_win *so_long, int y_move)
 	t_pos	pos;
 
 	pos = so_long->map.pos;
-	mlx_destroy_image(so_long->mlx_ptr, so_long->img->player);
+	if (so_long->img->player)
+		mlx_destroy_image(so_long->mlx_ptr, so_long->img->player);
 	if (y_move == 1)
 		so_long->img->player = insert_new_images(*so_long, \
 		"./xpm/player_down.xpm");
@@ -53,7 +54,8 @@ void	move_player_lines(t_win *so_long, int x_move)
 	t_pos	pos;
 
 	pos = so_long->map.pos;
-	mlx_destroy_image(so_long->mlx_ptr, so_long->img->player);
+	if (so_long->img->player)
+		mlx_destroy_image(so_long->mlx_ptr, so_long->img->player);
 	if (x_move == 1)
 		so_long->img->player = insert_new_images(*so_long, \
 		"./xpm/player_right.xpm");

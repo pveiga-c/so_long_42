@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:54:44 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/05 18:01:21 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:25:55 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ typedef struct s_win
 
 /*  so_long  */
 
+char		*path_img(int num);
+void		images_check(t_win so_long);
 void		game_init(t_win so_long);
 int			main(int argc, char **argv);
 
@@ -117,6 +119,7 @@ void		*insert_new_images(t_win so_long, char *path);
 void		insert_images(t_win so_long);
 
 /* moves */
+
 int			load_keys(int keycode, t_win *win);
 void		move_player_column(t_win *so_long, int y_move);
 void		move_player_lines(t_win *so_long, int x_move);
@@ -124,8 +127,10 @@ void		move_up_down(t_win *so_long, int y_move);
 void		move_right_left(t_win *so_long, int x_move);
 
 /* enemies */
-int			read_frame(t_win	*so_long);
+
+int			read_frame(t_win *so_long);
 void		display_status(t_win *so_long);
-void		values_init(t_win *so_long);
+void		values_init(t_win so_long);
+char		*path_img_enemy(int num);
 
 #endif

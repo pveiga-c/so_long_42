@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:19:40 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/05 19:22:03 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:26:32 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,31 @@ void	display_status(t_win *so_long)
 	free(str);
 }
 
-void	values_init(t_win *so_long)
+void	values_init(t_win so_long)
 {
-	so_long->moves_player = 0;
-	so_long->enemy = 0;
-	so_long->frame = 1;
+	so_long.img->collectible = NULL;
+	so_long.img->exit = NULL;
+	so_long.img->floor = NULL;
+	so_long.img->player = NULL;
+	so_long.img->wall = NULL;
+	so_long.img->enemy = NULL;
+	so_long.enemy = 0;
+	so_long.frame = 1;
+}
+
+char	*path_img_enemy(int num)
+{
+	char	*str;
+
+	if (num == 1)
+		str = "./bonus/xpm/enemy1.xpm";
+	if (num == 2)
+		str = "./bonus/xpm/enemy2.xpm";
+	if (num == 3)
+		str = "./bonus/xpm/enemy3.xpm";
+	if (num == 4)
+		str = "./bonus/xpm/enemy4.xpm";
+	if (num == 5)
+		str = "./bonus/xpm/enemy5.xpm";
+	return (str);
 }
