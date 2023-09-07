@@ -6,7 +6,7 @@
 /*   By: pveiga-c <pveiga-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:27:26 by pveiga-c          #+#    #+#             */
-/*   Updated: 2023/09/05 19:03:30 by pveiga-c         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:12:06 by pveiga-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_pos_flood_fill(char **temp_matrix, t_map *map, int pos_h, int pos_w)
 {
 	if (pos_h < 0 || pos_h >= map->height || pos_w < 0 || pos_w >= map->width)
 		return (0);
-	if (temp_matrix[pos_h][pos_w] == 'E')
+	if (temp_matrix[pos_h][pos_w] == 'E' || temp_matrix[pos_h][pos_w] == 'M')
 		temp_matrix[pos_h][pos_w] = '1';
 	if (temp_matrix[pos_h][pos_w] != '1' && temp_matrix[pos_h][pos_w] != 'X')
 	{
