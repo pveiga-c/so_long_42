@@ -28,7 +28,7 @@ OBJS_BONUS 		   = $(SRCS_BONUS:.c=.o)
 
 CC 				   = cc 
 
-CFLAGS 			   = -g -d -Wall -Wextra -Werror  -Imlx_linux  # -fsanitize=address
+CFLAGS 			   = -g -Wall -Wextra -Werror  -Imlx_linux  # -fsanitize=address
 
 MLX_L			   = -L mlx_linux -lmlx -lXext -lX11
 
